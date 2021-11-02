@@ -1,0 +1,27 @@
+<script>
+        var max = prompt("Introduce el número máximo del rango"); //NUMERO MAXIMO QUE SE VA A GENERAR
+        var min = 1; // NUMERO MINIMO QUE SE VA A GENERAR
+        var numeroSecretro = Math.random() * (max - min) + min; //Genera un numero aleatorio entre el max y el min
+        numeroSecretro = parseInt(numeroSecretro); 
+        var maxIntentos=prompt("Introduce el número máximo de intentos");
+        var intentos=0;
+        while (intentos<=maxIntentos) { //EL WHILE TRUE VA A PERMITIR QUE SE EJECUTE TODO EL CODIGO HASTA QUE EXISTA UN BREAK. EN ESTE CASO EL USUARIO VA A SEGUIR COLOCANDO EL NUMERO HASTA QUE LO ADIVINE.
+            var usuario = prompt("Inserta un numero para adivinar el numero Secretro");
+
+            if (usuario == numeroSecretro) { 
+                alert("HAS GANADO");
+                break;
+            }
+            else if (usuario < numeroSecretro) {
+                var intentosActuales= maxIntentos-intentos;
+                intentosActuales=parseInt(intentosActuales);
+                alert("El numero es menor que el numero secreto, te quedan "+intentosActuales+" intentos");
+            }
+            else if (usuario > numeroSecretro) {
+                var intentosActuales= maxIntentos-intentos;
+                intentosActuales=parseInt(intentosActuales);
+                alert("El numero es mayor que el numero secreto, te quedan "+intentosActuales+" intentos");
+            }
+            intentos++;
+        } 
+</script>
