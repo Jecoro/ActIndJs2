@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="password">Introduzca su contraseña para probar su fortaleza:</label>
+        <input type="text" id="password">
+        <br>
+        <br>
+        <input type="submit" onclick="comprobar()">
+        <br>
+        <p id="resultado"></p>
+    </form>
+</body>
+<script>
+    //Lista de variables:
+    function comprobar(){
+        var simbolos=0;
+        var letrasMin=0;
+        var numeros=0;
+        var cadena = document.getElementById('password').value;
+        console.log(cadena);
+        var letrasMayusc=0;
+        var longitud =cadena.length;
+        var dominante,sierva,varemo; //Variables para gestionar la cantidad de mayusculas y minusculas en relacion con el caso dominante
+        var validacionSimbolos,validacionNumeros,validacionLetrasMin,validacionLetrasMayusc; //validaciones para controlar los porcentajes que determinan si es fuerte o no 
+        //Algoritmo:
+        for(var i=0;i<longitud;i++){
+            if(cadena.charCodeAt(i)>47 & cadena.charCodeAt(i)<58){
+                numeros++;
+            }else if(cadena.charCodeAt(i)>64 & cadena.charCodeAt(i)<91){
+                letrasMayusc++;
+            }else if(cadena.charCodeAt(i)>96 & cadena.charCodeAt(i)<123){
+                letrasMin++;
+            }else{
+                simbolos++; 
+            }
+            
+        }
+
+        validacionSimbolos=simbolos*100/longitud;
+        validacionNumeros=numeros*100/longitud;
+        validacionLetrasMayusc=letrasMayusc*100/longitud;
+        validacionLetrasMin=letrasMin*100/longitud;
+
+        if(validacionLetrasMayusc>validacionLetrasMin){
+            dominante=letrasMayusc;
+            sierva=letrasMin;
+        }else{
+            dominante=letrasMin;
+            sierva=letrasMayusc;
+        }
+
+        varemo= dominante*30/100;
+
+        if(validacionSimbolos>9 & validacionNumeros >19 & sierva >= varemo ){
+            document.getElementById('resultado').innerHTML = "Su contraseña es fuerte";
+        }else{
+            document.getElementById('resultado').innerHTML = "Su contraseña no es fuerte";
+        }
+    }
+</script>
+</html>
