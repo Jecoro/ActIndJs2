@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function invertir(){
+        var palabra = document.getElementById('palabra').value;
+        var longitud = palabra.length;
+        var palabraInvertida="";
+        for(var i=0;i<longitud;i++){
+            palabraInvertida=palabraInvertida+palabra[longitud-1-i]
+        }
+        document.getElementById('resultado').innerHTML = "La cadena invertida es: "+palabraInvertida;
+    }
+</script>
+<body>
+    <form onsubmit="return false">
+        <label for="palabra">Insert una cadena de Caracteres amigo:</label>
+        <input type="text" id="palabra">
+        <br>
+        <br>
+        <input type="submit" onclick="invertir()">
+        <br>
+        <p id="resultado"></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function calcularRelacion(){
+        var potencia1 = document.getElementById('potencia1').value;
+        var potencia2 = document.getElementById('potencia2').value;
+        var resultado= 10 * Math.log10((potencia1/potencia2));
+        document.getElementById('resultado').innerHTML = "La relacion es de "+resultado+"Db";
+        
+    }
+</script>
+<body>
+     <form onsubmit="return false">
+        <label for="potencia1">Potencia1:</label>
+        <input type="number" id="potencia1">
+        <label for="potencia2">Potencia2:</label>
+        <input type="number" id="potencia2">
+        <br>
+        <br>
+        <input type="submit" onclick="calcularRelacion()">
+        <br>
+        <p id="resultado"></p>
+    </form>
+</body>
+</html>
