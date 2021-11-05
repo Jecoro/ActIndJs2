@@ -12,16 +12,118 @@
         <input type="text" id="cadena">
         <br>
         <br>
-        <input type="submit" onclick="generar()">
+        <input type="submit" onclick="generarTablaDesordenada(),generarTablaOrdValor(),generarTablaOrdNombre()">
         <br>
         <p id="resultado"></p>
     </form>
+    <table id="Desordenada:">
+        <tr><th colspan="2"></th>Desordenada</tr>
+        <tr>
+            <th>Pujador</th>
+            <th>Puja</th>
+        </tr>
+    </table>
+    <table id="OrdenadaNom:">
+        <tr><th colspan="2"></th>Ordenada Por Nombre</tr>
+        <tr>
+            <th>Pujador</th>
+            <th>Puja</th>
+        </tr>
+    </table>
+    <table id="OrdenadaValor:">
+        <tr><th colspan="2"></th>Ordenada Por Puja</tr>
+        <tr>
+            <th>Pujador</th>
+            <th>Puja</th>
+        </tr>
+
+    </table>
 </body>
 <script>
-    function generar(){
+    function generarTablaDesordenada(){
         var cadena = document.getElementById('cadena').value;
         var palabrasCadena=cadena.split(',');
-        console.log(palabrasCadena[2]);
+        var arrayBidimensional=[];
+        
+        for(var i=0;i<palabrasCadena.length;i=i+2){
+            let items = [
+            { name: palabrasCadena[i], valor: palabrasCadena[i+1] },
+            ];
+            arrayBidimensional.push.apply(arrayBidimensional,items);
+        }  
+        for(var x=0;x<arrayBidimensional.length;x++){
+            agregarFilaDesordenada(arrayBidimensional[x].name,arrayBidimensional[x].valor);
+        }
+        
+
+
     }
+    function generarTablaOrdValor(){
+        var cadena = document.getElementById('cadena').value;
+        var palabrasCadena=cadena.split(',');
+        var arrayBidimensional=[];
+        
+        for(var i=0;i<palabrasCadena.length;i=i+2){
+            let items = [
+            { name: palabrasCadena[i], valor: palabrasCadena[i+1] },
+            ];
+            arrayBidimensional.push.apply(arrayBidimensional,items);
+        }
+        console.log(arrayBidimensional)
+        // sort by value
+        arrayBidimensional.sort(function (a, b) {
+            return (b.valor - a.valor)
+        })
+        console.log(arrayBidimensional);
+        for(var x=0;x<arrayBidimensional.length;x++){
+            agregarFilaNum(arrayBidimensional[x].name,arrayBidimensional[x].valor);
+        }
+        
+
+
+    }    
+    function generarTablaOrdNombre(){
+        var cadena = document.getElementById('cadena').value;
+        var palabrasCadena=cadena.split(',');
+        var arrayBidimensional=[];
+        
+        for(var i=0;i<palabrasCadena.length;i=i+2){
+            let items = [
+            { name: palabrasCadena[i], valor: palabrasCadena[i+1] },
+            ];
+            arrayBidimensional.push.apply(arrayBidimensional,items);
+        }
+        console.log(arrayBidimensional)
+        // sort by name
+        arrayBidimensional.sort(function(a, b) {
+        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        // names must be equal
+        return 0;
+        });
+        for(var x=0;x<arrayBidimensional.length;x++){
+            agregarFilaNombre(arrayBidimensional[x].name,arrayBidimensional[x].valor);
+        }
+
+
+
+    }
+    function agregarFilaDesordenada(pujador,puja){
+        document.getElementById("Desordenada").insertRow(-1).innerHTML = '<td>'+pujador+'</td>'+'<td>'+puja+'</td>';
+    }
+    function agregarFilaNum(pujador,puja){
+        document.getElementById("OrdenadaValor").insertRow(-1).innerHTML = '<td>'+pujador+'</td>'+'<td>'+puja+'</td>';
+    }
+    function agregarFilaNombre(pujador,puja){
+        document.getElementById("OrdenadaNom").insertRow(-1).innerHTML = '<td>'+pujador+'</td>'+'<td>'+puja+'</td>';
+    }
+
 </script>
 </html>
