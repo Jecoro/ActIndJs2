@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ5</title>
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="expression">Operation: </label> <br>
+        <input type="text" id="expression">
+        <br>
+        <br>
+        <input type="submit" onclick="calc()">
+    </form>
+
+    <br>
+
+    <p id="respuesta"></p>
+
+    <script>
+        function calc(){
+        var answer = '';
+        var res = 0;
+        var expression = document.getElementById('expression').value;
+        var initialexpression = expression;
+        var numero1 = expression.substring(0,1);   
+        expression = expression.substring(1,expression.length);  
+        var operacion = '';
+        for (var i = 0; i < expression.length; i++) {
+        //obtenemos los valores de los operando y el operador
+            var operador = expression.substring(i,1+i);
+            var numero2 = expression.substring(1+i,2+i);
+        //hacemos el calculo y mostramos.   
+            switch (operador) {
+                case '+':
+                res = Number(numero1)+Number(numero2);
+                answer = "Suma: " + numero1+" + "+numero2+ " = " + res;
+                numero1 = res;
+                document.write(answer+"<br>")
+                break;
+                case '-':
+                res = Number(numero1)-Number(numero2);
+                answer = "Resta: " + numero1+" - "+numero2 + " = " + res;
+                numero1 = res;
+                document.write(answer+"<br>")
+                break;
+                case '*':
+                res = Number(numero1)*Number(numero2);
+                answer = "Multiplicacion: " + numero1+" * "+numero2+ " = " + res;
+                numero1 = res;
+                document.write(answer+"<br>")
+                break;
+                case '/':
+                res = Number(numero1)/Number(numero2);
+                answer = "Division: " + numero1+" / "+numero2+ " = " + res;
+                numero1 = res;
+                document.write(answer+"<br>")
+                break;
+                case '%':
+                res = Number(numero1)%Number(numero2);
+                answer = "Resto: " + numero1+" % "+numero2+ " = " + res;
+                numero1 = res;
+                document.write(answer+"<br>")
+                break;
+               
+            
+            }      
+        }
+        var finaloutput = res;
+        document.write("Total: "+initialexpression+" = "+finaloutput )
+
+    }
+    </script>
+</body>
+</html>
