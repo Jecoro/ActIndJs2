@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: white;">
+
+<h1 id="blink">Esperando...</h1>
+
+<script type="text/javascript">
+        segundos = prompt("Inserte el numero de segundos que ha de contar:")
+        setTimeout(function (segundos) {
+            window.setInterval(BlinkIt, 500);
+            var color = "white";
+            document.body.style.backgroundColor = "red"
+            function BlinkIt() {
+                var blink = document.getElementById("blink");
+                color = (color == "#ffffff") ? "red" : "#ffffff";
+                document.getElementById('blink').innerHTML = "TIEMPO AGOTADO";
+                blink.style.color = color;
+                blink.style.fontSize = '36px';
+            }
+        }, segundos * 1000);
+
+  </script>
+
+</body>
+</html>
