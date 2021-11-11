@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="minInches">Pulgadas minimas: </label> <br>
+        <input type="text" id="minInches">
+        <br>
+        <label for="maxInches">Pulgadas maximas: </label> <br>
+        <input type="text" id="maxInches">
+        <br>
+        <br>
+        <input type="submit" onclick="create()">
+    </form>
+    <br>
+    <table id="inches"></table>
+    <br>
+
+    <p id="answer"></p>
+
+    <script>
+        function create(){
+        var min =Number( document.getElementById("minInches").value);
+        var max =Number( document.getElementById("maxInches").value);
+        console.log(min);
+        console.log(max);
+        
+        if (max < min){
+            alert('Las pulgadas maximas no pueden ser menores que las minimas amigo')
+        }else{
+            document.getElementById("inches").insertRow(-1).innerHTML = '<th>'+"Pulgadas"+'</th>'+'<th>'+"Ancho"+'</th>'+'<th>'+"Alto"+'</th>';
+            for(var i=min;i<=max;i++){
+                var alto=Number(i*1.245);
+                var ancho=Number(i*2.21);
+                document.getElementById("inches").insertRow(-1).innerHTML = '<td>'+i+'</td>'+'<td>'+ancho.toFixed(2)+'</td>'+'<td>'+alto.toFixed(2)+'</td>';
+
+            }
+        }
+    }
+
+
+    </script>
+</body>
+</html>
