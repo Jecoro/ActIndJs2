@@ -29,10 +29,10 @@
         expression = expression.substring(1,expression.length);  
         var operacion = '';
         for (var i = 0; i < expression.length; i++) {
-        //obtenemos los valores de los operando y el operador
+        //operando y el operador
             var operador = expression.substring(i,1+i);
             var numero2 = expression.substring(1+i,2+i);
-        //hacemos el calculo y mostramos.   
+        //Calcular y mostrar   
             switch (operador) {
                 case '+':
                 res = Number(numero1)+Number(numero2);

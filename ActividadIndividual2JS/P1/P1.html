@@ -70,7 +70,7 @@
             arrayBidimensional.push.apply(arrayBidimensional,items);
         }
         console.log(arrayBidimensional)
-        // sort by value
+        
         arrayBidimensional.sort(function (a, b) {
             return (b.valor - a.valor)
         })
@@ -94,10 +94,10 @@
             arrayBidimensional.push.apply(arrayBidimensional,items);
         }
         console.log(arrayBidimensional)
-        // sort by name
+       
         arrayBidimensional.sort(function(a, b) {
-        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        var nameA = a.name.toUpperCase(); 
+        var nameB = b.name.toUpperCase(); 
         if (nameA < nameB) {
             return -1;
         }
@@ -105,7 +105,7 @@
             return 1;
         }
 
-        // names must be equal
+       
         return 0;
         });
         for(var x=0;x<arrayBidimensional.length;x++){
